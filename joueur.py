@@ -11,6 +11,7 @@ class Joueur:
 		self.nom = nom
 		self.couleur = couleur
 		self.listDePiece = None
+		self.indexDeLaPiece = 0
 
 	def getPieces(self):
 		return self.listDePiece
@@ -23,3 +24,21 @@ class Joueur:
 
 	def getNom(self):
 		return self.nom
+
+	def getPremierePiece(self):
+		self.indexDeLaPiece = 0
+		return self.listDePiece[self.indexDeLaPiece]
+
+	def getPieceSuivante(self):
+		if self.indexDeLaPiece < len(self.listDePiece)-1:
+			self.indexDeLaPiece += 1
+		else:
+			self.indexDeLaPiece = 0
+		return self.listDePiece[self.indexDeLaPiece]
+
+	def getPiecePrecedente(self):
+		if self.indexDeLaPiece == 0:
+			self.indexDeLaPiece = len(self.listDePiece) - 1
+		else:
+			self.indexDeLaPiece -= 1
+		return self.listDePiece[self.indexDeLaPiece]

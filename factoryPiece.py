@@ -1,3 +1,5 @@
+from piece import Piece
+
 class FactoryPiece:
 	def createAllPiece(couleur):
 		listeAllPiece = []
@@ -132,27 +134,27 @@ class FactoryPiece:
 		Piece21[1][2] = couleur
 		Piece21[2][1] = couleur
 
-		listeAllPiece.append(Piece1)
-		listeAllPiece.append(Piece2)
-		listeAllPiece.append(Piece3)
-		listeAllPiece.append(Piece4)
-		listeAllPiece.append(Piece5)
-		listeAllPiece.append(Piece6)
-		listeAllPiece.append(Piece7)
-		listeAllPiece.append(Piece8)
-		listeAllPiece.append(Piece9)
-		listeAllPiece.append(Piece10)
-		listeAllPiece.append(Piece11)
-		listeAllPiece.append(Piece12)
-		listeAllPiece.append(Piece13)
-		listeAllPiece.append(Piece14)
-		listeAllPiece.append(Piece15)
-		listeAllPiece.append(Piece16)
-		listeAllPiece.append(Piece17)
-		listeAllPiece.append(Piece18)
-		listeAllPiece.append(Piece19)
-		listeAllPiece.append(Piece20)
-		listeAllPiece.append(Piece21)
+		listeAllPiece.append(Piece(Piece1))
+		listeAllPiece.append(Piece(Piece2))
+		listeAllPiece.append(Piece(Piece3))
+		listeAllPiece.append(Piece(Piece4))
+		listeAllPiece.append(Piece(Piece5))
+		listeAllPiece.append(Piece(Piece6))
+		listeAllPiece.append(Piece(Piece7))
+		listeAllPiece.append(Piece(Piece8))
+		listeAllPiece.append(Piece(Piece9))
+		listeAllPiece.append(Piece(Piece10))
+		listeAllPiece.append(Piece(Piece11))
+		listeAllPiece.append(Piece(Piece12))
+		listeAllPiece.append(Piece(Piece13))
+		listeAllPiece.append(Piece(Piece14))
+		listeAllPiece.append(Piece(Piece15))
+		listeAllPiece.append(Piece(Piece16))
+		listeAllPiece.append(Piece(Piece17))
+		listeAllPiece.append(Piece(Piece18))
+		listeAllPiece.append(Piece(Piece19))
+		listeAllPiece.append(Piece(Piece20))
+		listeAllPiece.append(Piece(Piece21))
 
 		return listeAllPiece
 
@@ -162,5 +164,5 @@ class FactoryPiece:
 			for ligne in range (len(piece)):
 				for colonne in range (len(piece)):
 					print (piece[ligne][colonne],end="")
-				print(" ") 
+				print(" ")
 			print(" ")

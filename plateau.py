@@ -1,12 +1,12 @@
 class Plateau:
 	def __init__(self):
 		self.taille = 22
-		self.tableauJeu = [[' ' for i in range(self.taille)] for j in range(self.taille)]	
+		self.tableauJeu = [[' ' for i in range(self.taille)] for j in range(self.taille)]
 
 	def effaceEcran ():
 		for i in range (1,100) :
 		    print("\n")
-	
+
 	def initPlateau(self):
 		for i in range(self.taille):
 			self.tableauJeu[0][i] = '*'
@@ -20,9 +20,9 @@ class Plateau:
 		        print (self.tableauJeu[ligne][colonne],end="")
 		    print(" ")
 
-	
 
 
-#put piece, vérification si placement 
+
+#put piece, vérification si placement
 #						->oui alors la placé
 #							-> vérifier si game fini

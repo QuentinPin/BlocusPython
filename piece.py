@@ -47,3 +47,5 @@ class Piece:
 	# a quand même des zone vide, ne fesant pas partie de la pièce)
 	def getColorAtThisPoint(self, x, y):
 		return self.matrice[x, y]
+
+	# TODO : faire le miroire de la pièce
