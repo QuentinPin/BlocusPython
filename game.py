@@ -45,8 +45,10 @@ class Game:
 		print("\t- (D) pour décaler la pièce à droite")
 		print("")
 		print("\t- (R) pour tourner la pièce")
+		print("\t- (T) pour retourner la pièce")
 		print("\t- (m) pièce suivante")
 		print("\t- (l) pièce précédente")
+		print("\t- (V) pour valider (placer la pièce)")
 
 	def joueurSuivant(self):
 		self.joueurEnCours = self.listDeJoueur[1 - self.listDeJoueur.index(self.joueurEnCours)]
@@ -61,10 +63,14 @@ class Game:
 		elif saisie == "d":
 			print()
 		elif saisie == "r":
-			print()
+			self.pieceEnCours.rotation()
+		elif saisie == "t":
+			self.pieceEnCours.retourner()
 		elif saisie == "m":
 			self.pieceEnCours = self.joueurEnCours.getPieceSuivante()
 		elif saisie == "l":
 			self.pieceEnCours = self.joueurEnCours.getPiecePrecedente()
+		elif saisie == "v":
+			print()
 		else:
 			print("Commande non autorisé")

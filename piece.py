@@ -39,6 +39,17 @@ class Piece:
 			numLigne += 1
 		self.matrice = nouvelleMatrice
 
+	#Retourner la pièce
+	def retourner(self):
+		nouvelleMatrice = []
+		ligne = []
+		for x in range(len(self.matrice)):
+			for y in range(len(self.matrice)):
+				ligne.append(self.matrice[x][len(self.matrice) - 1 - y])
+			nouvelleMatrice.append(ligne)
+			ligne = []
+		self.matrice = nouvelleMatrice
+
 	# Return la plus grande longueur de la pièce (taille de la matrice)
 	def getSizeMatrice(self):
 		return len(self.matrice)

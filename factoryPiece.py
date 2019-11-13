@@ -164,5 +164,5 @@ class FactoryPiece:
 			for ligne in range (len(piece)):
 				for colonne in range (len(piece)):
 					print (piece[ligne][colonne],end="")
-				print(" ") 
+				print(" ")
 			print(" ")
