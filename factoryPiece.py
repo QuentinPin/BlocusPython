@@ -62,19 +62,19 @@ class FactoryPiece:
 		Piece11[3][1] = couleur
 		Piece11[3][0] = couleur
 
-		Piece12 = [[' ' for i in range(5)] for j in range(5)]
-		Piece12[3][0] = couleur
-		Piece12[4][0] = couleur
-		Piece12[3][1] = couleur
-		Piece12[2][1] = couleur
+		Piece12 = [[' ' for i in range(4)] for j in range(4)]
+		Piece12[0][1] = couleur
 		Piece12[1][1] = couleur
+		Piece12[2][1] = couleur
+		Piece12[2][0] = couleur
+		Piece12[3][0] = couleur
 
-		Piece13 = [[' ' for i in range(4)] for j in range(4)]
+		Piece13 = [[' ' for i in range(3)] for j in range(3)]
 		Piece13[0][1] = couleur
 		Piece13[1][1] = couleur
 		Piece13[2][1] = couleur
+		Piece13[1][0] = couleur
 		Piece13[2][0] = couleur
-		Piece13[3][0] = couleur
 
 		Piece14 = [[' ' for i in range(3)] for j in range(5)]
 		Piece14[0][0] = couleur
