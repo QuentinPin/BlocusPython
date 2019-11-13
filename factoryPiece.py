@@ -1,3 +1,5 @@
+from piece import Piece
+
 class FactoryPiece:
 	def createAllPiece(couleur):
 		listeAllPiece = []
@@ -76,7 +78,7 @@ class FactoryPiece:
 		Piece13[1][0] = couleur
 		Piece13[2][0] = couleur
 
-		Piece14 = [[' ' for i in range(3)] for j in range(5)]
+		Piece14 = [[' ' for i in range(3)] for j in range(3)]
 		Piece14[0][0] = couleur
 		Piece14[0][1] = couleur
 		Piece14[1][1] = couleur
