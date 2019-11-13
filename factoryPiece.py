@@ -24,11 +24,11 @@ class FactoryPiece:
 		Piece5[2][0] = couleur
 		Piece5[3][0] = couleur
 
-		Piece6 = [[' ' for i in range(4)] for j in range(4)]
-		Piece6[3][0] = couleur
-		Piece6[3][1] = couleur
-		Piece6[2][1] = couleur
+		Piece6 = [[' ' for i in range(3)] for j in range(3)]
+		Piece6[0][1] = couleur
 		Piece6[1][1] = couleur
+		Piece6[2][1] = couleur
+		Piece6[2][0] = couleur
 
 		Piece7 = [[' ' for i in range(3)] for j in range(3)]
 		Piece7[0][0] = couleur
@@ -55,12 +55,12 @@ class FactoryPiece:
 		Piece10[3][0] = couleur
 		Piece10[4][0] = couleur
 
-		Piece11 = [[' ' for i in range(5)] for j in range(5)]
-		Piece11[4][0] = couleur
-		Piece11[4][1] = couleur
-		Piece11[3][1] = couleur
-		Piece11[2][1] = couleur
+		Piece11 = [[' ' for i in range(4)] for j in range(4)]
+		Piece11[0][1] = couleur
 		Piece11[1][1] = couleur
+		Piece11[2][1] = couleur
+		Piece11[3][1] = couleur
+		Piece11[3][0] = couleur
 
 		Piece12 = [[' ' for i in range(5)] for j in range(5)]
 		Piece12[3][0] = couleur
@@ -69,19 +69,19 @@ class FactoryPiece:
 		Piece12[2][1] = couleur
 		Piece12[1][1] = couleur
 
-		Piece13 = [[' ' for i in range(5)] for j in range(5)]
-		Piece13[4][0] = couleur
-		Piece13[3][0] = couleur
-		Piece13[4][1] = couleur
-		Piece13[3][1] = couleur
+		Piece13 = [[' ' for i in range(4)] for j in range(4)]
+		Piece13[0][1] = couleur
+		Piece13[1][1] = couleur
 		Piece13[2][1] = couleur
+		Piece13[2][0] = couleur
+		Piece13[3][0] = couleur
 
-		Piece14 = [[' ' for i in range(5)] for j in range(5)]
-		Piece14[4][0] = couleur
-		Piece14[4][1] = couleur
-		Piece14[3][1] = couleur
-		Piece14[2][1] = couleur
+		Piece14 = [[' ' for i in range(3)] for j in range(5)]
+		Piece14[0][0] = couleur
+		Piece14[0][1] = couleur
+		Piece14[1][1] = couleur
 		Piece14[2][0] = couleur
+		Piece14[2][1] = couleur
 
 		Piece15 = [[' ' for i in range(4)] for j in range(4)]
 		Piece15[0][0] = couleur
@@ -132,27 +132,27 @@ class FactoryPiece:
 		Piece21[1][2] = couleur
 		Piece21[2][1] = couleur
 
-		listeAllPiece.append(Piece1)
-		listeAllPiece.append(Piece2)
-		listeAllPiece.append(Piece3)
-		listeAllPiece.append(Piece4)
-		listeAllPiece.append(Piece5)
-		listeAllPiece.append(Piece6)
-		listeAllPiece.append(Piece7)
-		listeAllPiece.append(Piece8)
-		listeAllPiece.append(Piece9)
-		listeAllPiece.append(Piece10)
-		listeAllPiece.append(Piece11)
-		listeAllPiece.append(Piece12)
-		listeAllPiece.append(Piece13)
-		listeAllPiece.append(Piece14)
-		listeAllPiece.append(Piece15)
-		listeAllPiece.append(Piece16)
-		listeAllPiece.append(Piece17)
-		listeAllPiece.append(Piece18)
-		listeAllPiece.append(Piece19)
-		listeAllPiece.append(Piece20)
-		listeAllPiece.append(Piece21)
+		listeAllPiece.append(Piece(Piece1))
+		listeAllPiece.append(Piece(Piece2))
+		listeAllPiece.append(Piece(Piece3))
+		listeAllPiece.append(Piece(Piece4))
+		listeAllPiece.append(Piece(Piece5))
+		listeAllPiece.append(Piece(Piece6))
+		listeAllPiece.append(Piece(Piece7))
+		listeAllPiece.append(Piece(Piece8))
+		listeAllPiece.append(Piece(Piece9))
+		listeAllPiece.append(Piece(Piece10))
+		listeAllPiece.append(Piece(Piece11))
+		listeAllPiece.append(Piece(Piece12))
+		listeAllPiece.append(Piece(Piece13))
+		listeAllPiece.append(Piece(Piece14))
+		listeAllPiece.append(Piece(Piece15))
+		listeAllPiece.append(Piece(Piece16))
+		listeAllPiece.append(Piece(Piece17))
+		listeAllPiece.append(Piece(Piece18))
+		listeAllPiece.append(Piece(Piece19))
+		listeAllPiece.append(Piece(Piece20))
+		listeAllPiece.append(Piece(Piece21))
 
 		return listeAllPiece
 
