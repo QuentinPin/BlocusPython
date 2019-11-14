@@ -11,10 +11,11 @@ import numpy as np
 class Piece:
 
 	# Constructeur de ma pièce. On lui donne en param sa pièce
-	def __init__(self, matrice):
+	def __init__(self, matrice, pieceId):
 		self.matrice = matrice
 		self.positionX = 10
 		self.positionY = 10
+		self.pieceId = pieceId
 
 	# Permet d'afficher uniquement la pièce
 	def afficher(self):
