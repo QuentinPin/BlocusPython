@@ -6,6 +6,8 @@ Created on Fri Nov  8 11:08:31 2019
 """
 from plateau import Plateau
 from factoryPiece import FactoryPiece
+import keyboard
+import time
 
 class Game:
 
@@ -33,8 +35,7 @@ class Game:
 			self.plateau.affichePlateau()
 			self.pieceEnCours.afficher()
 			self.afficheMenu()
-			saisie = input()
-			self.action(saisie)
+			self.action()
 
 	def afficheMenu(self):
 		print("Choisissez une action : ")
@@ -51,25 +52,44 @@ class Game:
 
 	def joueurSuivant(self):
 		self.joueurEnCours = self.listDeJoueur[1 - self.listDeJoueur.index(self.joueurEnCours)]
+		self.pieceEnCours = self.joueurEnCours.getPremierePiece()
 
-	def action(self, saisie):
-		if saisie == "z":
-			self.pieceEnCours.monter()
-		elif saisie == "s":
-			self.pieceEnCours.descendre()
-		elif saisie == "q":
-			self.pieceEnCours.gauche()
-		elif saisie == "d":
-			self.pieceEnCours.droite()
-		elif saisie == "r":
-			self.pieceEnCours.rotation()
-		elif saisie == "t":
-			self.pieceEnCours.retourner()
-		elif saisie == "m":
-			self.pieceEnCours = self.joueurEnCours.getPieceSuivante()
-		elif saisie == "l":
-			self.pieceEnCours = self.joueurEnCours.getPiecePrecedente()
-		elif saisie == "v":
-			self.plateau.validerPiece()
-		else:
-			print("Commande non autorisé")
+	def action(self):
+		time.sleep(.1)
+		while True:
+			try:
+				if keyboard.is_pressed('z'):
+					self.pieceEnCours.monter()
+					break
+				elif keyboard.is_pressed('s'):
+					self.pieceEnCours.descendre()
+					break
+				elif keyboard.is_pressed('q'):
+					self.pieceEnCours.gauche()
+					break
+				elif keyboard.is_pressed('d'):
+					self.pieceEnCours.droite()
+					break
+				elif keyboard.is_pressed('r'):
+					self.pieceEnCours.rotation()
+					break
+				elif keyboard.is_pressed('t'):
+					self.pieceEnCours.retourner()
+					break
+				elif keyboard.is_pressed('m'):
+					self.pieceEnCours.positionX = 10
+					self.pieceEnCours.positionY = 10
+					self.pieceEnCours = self.joueurEnCours.getPieceSuivante()
+					break
+				elif keyboard.is_pressed('l'):
+					self.pieceEnCours.positionX = 10
+					self.pieceEnCours.positionY = 10
+					self.pieceEnCours = self.joueurEnCours.getPiecePrecedente()
+					break
+				elif keyboard.is_pressed('v'):
+					self.plateau.validerPiece()
+					self.joueurEnCours.removePiece(self.pieceEnCours)
+					self.joueurSuivant()
+					break
+			except:
+				break

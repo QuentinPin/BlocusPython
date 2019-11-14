@@ -5,40 +5,14 @@ Created on Fri Nov  8 08:50:28 2019
 @author: quent
 """
 
-def affichePlateau (tableauDeJeuPreview):
-		for ligne in range (10):
-		    for colonne in range (10):
-		        print (tableauDeJeuPreview[ligne][colonne],end="")
-		    print(" ")
+import keyboard  # using module keyboard
 
-def placer(matrice, piece):
-	px = 2
-	py = 2
-	x = px
-	y = py
-	for i in range(len(piece)):
-		for j in range(len(piece)):
-			if piece[i][j] != " ":
-				matrice[x][y] = piece[i][j]
-			y += 1
-		y = py
-		x +=1
-	return matrice
-
-matrice = [[0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0],
-		   [0,0,0,0,0,0,0,0,0,0]]
-
-
-matriceACopier = [[" ", "1","1"],
-				  [" ", "1"," "],
-				  ["1", "1"," "]]
-
-affichePlateau(placer(matrice, matriceACopier))
+while True:  # making a loop
+    try:  # used try so that if user pressed other than the given key error will not be shown
+        if keyboard.is_pressed('q'):  # if key 'q' is pressed
+            print('You Pressed A Key!')
+            break  # finishing the loop
+        else:
+            pass
+    except:
+        break  # if user pressed a key other than the given key the loop will break

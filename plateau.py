@@ -40,4 +40,5 @@ class Plateau:
 
 	def validerPiece(self):
 		#On deoit d'abord faire la vérification
-		self.tableauJeu = self.tableauDeJeuPreview
+		self.tableauJeu = np.copy(self.tableauDeJeuPreview)
+		#On devra metre un return pour dire que le pour dire si la pièce a bien été placé
