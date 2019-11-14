@@ -37,3 +37,7 @@ class Plateau:
 				y += 1
 			y = piece.positionY
 			x +=1
+
+	def validerPiece(self):
+		#On deoit d'abord faire la vérification
+		self.tableauJeu = self.tableauDeJeuPreview

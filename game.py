@@ -70,6 +70,6 @@ class Game:
 		elif saisie == "l":
 			self.pieceEnCours = self.joueurEnCours.getPiecePrecedente()
 		elif saisie == "v":
-			print()
+			self.plateau.validerPiece()
 		else:
 			print("Commande non autorisé")
