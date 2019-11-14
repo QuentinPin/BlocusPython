@@ -29,13 +29,12 @@ class Game:
 
 	def deroulementDuJeu(self):
 		while(True): #Tant que la partie n'est pas fini
+			self.plateau.putPieceOnPreview(self.pieceEnCours)
 			self.plateau.affichePlateau()
 			self.pieceEnCours.afficher()
 			self.afficheMenu()
 			saisie = input()
 			self.action(saisie)
-
-
 
 	def afficheMenu(self):
 		print("Choisissez une action : ")
@@ -55,13 +54,13 @@ class Game:
 
 	def action(self, saisie):
 		if saisie == "z":
-			print()
+			self.pieceEnCours.monter()
 		elif saisie == "s":
-			print()
+			self.pieceEnCours.descendre()
 		elif saisie == "q":
-			print()
+			self.pieceEnCours.gauche()
 		elif saisie == "d":
-			print()
+			self.pieceEnCours.droite()
 		elif saisie == "r":
 			self.pieceEnCours.rotation()
 		elif saisie == "t":

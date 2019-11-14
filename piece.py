@@ -13,8 +13,8 @@ class Piece:
 	# Constructeur de ma pièce. On lui donne en param sa pièce
 	def __init__(self, matrice):
 		self.matrice = matrice
-		self.positionX = 0
-		self.positionY = 0
+		self.positionX = 10
+		self.positionY = 10
 
 	# Permet d'afficher uniquement la pièce
 	def afficher(self):
@@ -59,4 +59,18 @@ class Piece:
 	def getColorAtThisPoint(self, x, y):
 		return self.matrice[x, y]
 
-	# TODO : faire le miroire de la pièce
+	def monter(self):
+		if self.positionX > 1:
+			self.positionX -= 1
+
+	def descendre(self):
+		if self.positionX < 20:
+			self.positionX += 1
+
+	def gauche(self):
+		if self.positionY > 1:
+			self.positionY -= 1
+
+	def droite(self):
+		if self.positionY <20:
+			self.positionY += 1
