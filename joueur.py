@@ -42,6 +42,7 @@ class Joueur:
 		else:
 			self.indexDeLaPiece -= 1
 		return self.listDePiece[self.indexDeLaPiece]
-
+	
 	def removePiece(self, piece):
+		print(self.listDePiece)
 		self.listDePiece.remove(piece)

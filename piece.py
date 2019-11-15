@@ -6,16 +6,15 @@ Created on Fri Nov  8 08:26:25 2019
 """
 
 #permet de récupéré a partir d'un fichier
-import numpy as np
 
 class Piece:
 
 	# Constructeur de ma pièce. On lui donne en param sa pièce
-	def __init__(self, matrice, pieceId):
+	def __init__(self, matrice, couleur):
 		self.matrice = matrice
 		self.positionX = 10
 		self.positionY = 10
-		self.pieceId = pieceId
+		self.couleur = couleur
 
 	# Permet d'afficher uniquement la pièce
 	def afficher(self):

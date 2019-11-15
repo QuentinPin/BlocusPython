@@ -13,7 +13,7 @@ listDeJoueur = []
 for i in range(2):
 	print("Quel est le nom du joueur " + str(i + 1) + " ?")
 	nomJoueur = input()
-	print("Quel est la couleur (caractère) du joueur  " + str(i + 1) + "  ?")
+	print("Quel est la couleur (charactère) du joueur  " + str(i + 1) + "  ?")
 	couleurJoueur = input();
 	listDeJoueur.append(Joueur(nomJoueur, couleurJoueur))
 
