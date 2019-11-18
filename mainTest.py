@@ -6,14 +6,10 @@ Created on Fri Nov  8 08:50:28 2019
 """
 
 from enregistrement import Enregistrement
+from plateau import Plateau
 
-maMatrice = [["0","0","0","0","0","0"],
-			 ["0","0","0","0","0","0"],
-			 ["0","0","0","0","0","0"],
-			 ["0","0","0","0","0","0"],
-			 ["0","1","0","0","0","0"],
-			 ["0","0","0","0","0","0"]]
+saveFile = Enregistrement.loadFile("test1.npz")
 
-temp = Enregistrement(maMatrice)
-
-temp.enregistrer()
+plateau = Plateau()
+plateau.setPlateau(saveFile["plateau"])
+plateau.affichePlateau()

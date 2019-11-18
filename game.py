@@ -8,6 +8,7 @@ from plateau import Plateau
 from factoryPiece import FactoryPiece
 import keyboard
 import time
+from enregistrement import Enregistrement
 
 class Game:
 
@@ -20,6 +21,7 @@ class Game:
 			self.listDeJoueur[i].setPieces(FactoryPiece.createAllPiece(self.listDeJoueur[i].couleur))
 		self.joueurEnCours = None
 		self.pieceEnCours = None
+		self.runGame = True
 
 	def start(self):
 		self.joueurEnCours = self.listDeJoueur[1]
@@ -30,8 +32,9 @@ class Game:
 		self.deroulementDuJeu()
 
 	def deroulementDuJeu(self):
-		while(True): #Tant que la partie n'est pas fini
+		while(self.runGame): #Tant que la partie n'est pas fini
 			self.plateau.putPieceOnPreview(self.pieceEnCours)
+			for i in range(10) : print()
 			self.plateau.affichePlateau()
 			self.pieceEnCours.afficher()
 			self.afficheMenu()
@@ -49,6 +52,8 @@ class Game:
 		print("\t- (m) pièce suivante")
 		print("\t- (l) pièce précédente")
 		print("\t- (V) pour valider (placer la pièce)")
+		print("")
+		print("\t- (B) pour sauvegarder et quitter la partie")
 
 	def joueurSuivant(self):
 		self.joueurEnCours = self.listDeJoueur[1 - self.listDeJoueur.index(self.joueurEnCours)]
@@ -90,6 +95,13 @@ class Game:
 					self.plateau.validerPiece()
 					self.joueurEnCours.removePiece(self.pieceEnCours)
 					self.joueurSuivant()
+					break
+				elif keyboard.is_pressed('b'):
+					print("Enregistrement en cours....")
+					save = Enregistrement(self.plateau, self.listDeJoueur)
+					save.enregistrer()
+					print("Enregistrement terminer....")
+					self.runGame = False
 					break
 			except:
 				break

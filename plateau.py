@@ -38,6 +38,10 @@ class Plateau:
 			y = piece.positionY
 			x +=1
 
+	def setPlateau(self, matrice):
+		self.tableauDeJeuPreview = matrice
+		self.tableauJeu = matrice
+
 	def validerPiece(self):
 		#On deoit d'abord faire la vérification
 		self.tableauJeu = np.copy(self.tableauDeJeuPreview)
