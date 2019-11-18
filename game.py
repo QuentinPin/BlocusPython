@@ -92,9 +92,10 @@ class Game:
 					self.pieceEnCours = self.joueurEnCours.getPiecePrecedente()
 					break
 				elif keyboard.is_pressed('v'):
-					self.plateau.validerPiece()
-					self.joueurEnCours.removePiece(self.pieceEnCours)
-					self.joueurSuivant()
+					v = self.plateau.validerPiece(self.pieceEnCours, self.joueurEnCours)
+					if(v):
+						self.joueurEnCours.removePiece(self.pieceEnCours)
+						self.joueurSuivant()
 					break
 				elif keyboard.is_pressed('b'):
 					fileName = input("Saisissez le nom de votre partie : ")

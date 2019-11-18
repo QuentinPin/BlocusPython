@@ -23,7 +23,7 @@ if action == "1":
 		couleurJoueur = ""
 		while couleurJoueur == "":
 			print("Quel est la couleur (caractère) du joueur  " + str(i + 1) + "  ?")
-			couleurJoueur = input();
+			couleurJoueur = input()
 		listDeJoueur.append(Joueur(couleurJoueur))
 	game = Game(listDeJoueur)
 	game.start()
