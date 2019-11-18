@@ -97,11 +97,18 @@ class Game:
 					self.joueurSuivant()
 					break
 				elif keyboard.is_pressed('b'):
+					fileName = input("Saisissez le nom de votre partie : ")
 					print("Enregistrement en cours....")
 					save = Enregistrement(self.plateau, self.listDeJoueur)
-					save.enregistrer()
+					save.enregistrer(fileName)
 					print("Enregistrement terminer....")
 					self.runGame = False
 					break
 			except:
 				break
+
+	def setPlateau(self, plateau):
+		self.plateau = plateau
+
+	def setListeJoueur(self, listeDeJoueur):
+		self.listDeJoueur = listeDeJoueur

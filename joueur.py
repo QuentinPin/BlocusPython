@@ -7,8 +7,7 @@ Created on Fri Nov  8 10:22:43 2019
 
 class Joueur:
 
-	def __init__(self, nom, couleur):
-		self.nom = nom
+	def __init__(self, couleur):
 		self.couleur = couleur
 		self.listDePiece = None
 		self.indexDeLaPiece = 0
@@ -21,9 +20,6 @@ class Joueur:
 
 	def getNbPieceRestante(self):
 		return len(self.listDePiece)
-
-	def getNom(self):
-		return self.nom
 
 	def getPremierePiece(self):
 		self.indexDeLaPiece = 0
