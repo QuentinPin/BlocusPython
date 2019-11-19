@@ -15,14 +15,15 @@ class Enregistrement:
 		self.listDejoueur = listJoueur
 
 	def enregistrer(self, fileName):
-		pieceDuJoueur1 = self.createTableauPieceJoueur(self.listDejoueur[0].listDePiece)
-		pieceDuJoueur2 = self.createTableauPieceJoueur(self.listDejoueur[1].listDePiece)
+		pieceDuJoueur1 = self.createTableauPieceJoueur(0)
+		pieceDuJoueur2 = self.createTableauPieceJoueur(1)
 		np.savez(fileName, plateauDeJeu=self.plateau, pieceJoueur1=pieceDuJoueur1, pieceJoueur2=pieceDuJoueur2, plateau=self.plateau.tableauJeu)
 
-	def createTableauPieceJoueur(self, listeDePiece):
+	def createTableauPieceJoueur(self, index):
 		listePieceJoueur = []
-		for i in range(len(listeDePiece)):
-			listePieceJoueur.append(listeDePiece[i].pieceId)
+		listePieceJoueur.append(self.listDejoueur[index].couleur)
+		for i in range(len(self.listDejoueur[index].listDePiece)):
+			listePieceJoueur.append(self.listDejoueur[index].listDePiece[i].pieceId)
 		return listePieceJoueur
 
 	def loadFile(fileName):

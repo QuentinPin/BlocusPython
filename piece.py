@@ -75,3 +75,6 @@ class Piece:
 	def droite(self):
 		if self.positionY <20:
 			self.positionY += 1
+
+	def getId(self):
+		return self.pieceId

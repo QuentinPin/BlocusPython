@@ -16,9 +16,9 @@ class Game:
 	def __init__(self, listeDeJoueur):
 		self.plateau = Plateau()
 		self.listDeJoueur = listeDeJoueur
-		# Ajout de toutes les pièce au joueur
 		for i in range(len(self.listDeJoueur)):
-			self.listDeJoueur[i].setPieces(FactoryPiece.createAllPiece(self.listDeJoueur[i].couleur))
+			if self.listDeJoueur[i].getPieces() == None or len(self.listDeJoueur[i].getPieces()) == 0:
+				self.listDeJoueur[i].setPieces(FactoryPiece.createAllPiece(self.listDeJoueur[i].couleur))
 		self.joueurEnCours = None
 		self.pieceEnCours = None
 		self.runGame = True
@@ -92,10 +92,9 @@ class Game:
 					self.pieceEnCours = self.joueurEnCours.getPiecePrecedente()
 					break
 				elif keyboard.is_pressed('v'):
-					v = self.plateau.validerPiece(self.pieceEnCours, self.joueurEnCours)
-					if(v):
-						self.joueurEnCours.removePiece(self.pieceEnCours)
-						self.joueurSuivant()
+					self.plateau.validerPiece()
+					self.joueurEnCours.removePiece(self.pieceEnCours)
+					self.joueurSuivant()
 					break
 				elif keyboard.is_pressed('b'):
 					fileName = input("Saisissez le nom de votre partie : ")
