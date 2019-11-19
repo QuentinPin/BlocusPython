@@ -40,9 +40,9 @@ class Plateau:
 			y = piece.positionY
 			x +=1
 
-	def validerPiece(self, pieceEnCours, joueur):
+	def validerPiece(self, pieceEnCours, joueur, nextJoueur):
 		#On doit d'abord faire la vérification
-		if (self.verifierPlacement(pieceEnCours, joueur) == True):
+		if (self.verifierPlacement(pieceEnCours, joueur, nextJoueur) == True):
 			self.copyTableauPreview()
 			return True
 
@@ -62,7 +62,7 @@ class Plateau:
 		else:
 			return False
 
-	def verifierPlacement(self, lastPiece, joueur):
+	def verifierPlacement(self, lastPiece, joueur, nextJoueur):
 		copyTableauJeu = [[' ' for i in range(self.taille)] for j in range(self.taille)]
 		listSquarePlacer = []
 		verif = False
@@ -71,7 +71,13 @@ class Plateau:
 				copyTableauJeu[i][j] = self.tableauJeu[i][j]
 		for i in range(len(lastPiece.matrice)):
 			for j in range(len(lastPiece.matrice)):
+				if ((copyTableauJeu[lastPiece.positionX+i][lastPiece.positionY+j] == nextJoueur.couleur) and (lastPiece.matrice[i][j] != ' ')):
+					print("\033[31m", "ERREUR impossible de placer la piece")
+					print("\033[37m")
+					return False
 				if ((copyTableauJeu[lastPiece.positionX+i][lastPiece.positionY+j] == '*') and (lastPiece.matrice[i][j] != ' ')):
+					print("\033[31m", "ERREUR impossible de placer la piece")
+					print("\033[37m")
 					return False
 				if (lastPiece.matrice[i][j] != ' ') and (copyTableauJeu[lastPiece.positionX+i][lastPiece.positionY+j] == ' '):
 					copyTableauJeu[lastPiece.positionX+i][lastPiece.positionY+j] = lastPiece.matrice[i][j]
