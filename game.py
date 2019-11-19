@@ -94,10 +94,10 @@ class Game:
 				elif keyboard.is_pressed('v'):
 					if(self.plateau.validerPiece(self.pieceEnCours, self.joueurEnCours)):
 						self.joueurEnCours.removePiece(self.pieceEnCours)
-						self.joueurSuivant()
 					if (self.plateau.partieFini(self.joueurEnCours)):
 						self.runGame = False
 						print("Le joueur avec la couleur "+self.joueurEnCours.couleur+" A gagné")
+					self.joueurSuivant()
 					break
 				elif keyboard.is_pressed('b'):
 					fileName = input("Saisissez le nom de votre partie : ")

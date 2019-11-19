@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 
 class Plateau:
 	def __init__(self):
@@ -7,8 +8,8 @@ class Plateau:
 		self.tableauDeJeuPreview = [[' ' for i in range(self.taille)] for j in range(self.taille)]
 
 	def setPlateau(self, matrice):
-		self.tableauDeJeuPreview = matrice
-		self.tableauJeu = matrice
+		self.tableauDeJeuPreview = np.copy(matrice)
+		self.tableauJeu = np.copy(matrice)
 
 	def initPlateau(self):
 		for i in range(self.taille):
@@ -44,7 +45,7 @@ class Plateau:
 		if (self.verifierPlacement(pieceEnCours, joueur) == True):
 			self.copyTableauPreview()
 			return True
-	
+
 	def copyTableauJeu(self):
 		for i in range(self.taille):
 			for j in range(self.taille):
@@ -53,9 +54,9 @@ class Plateau:
 	def copyTableauPreview(self):
 		for i in range(self.taille):
 			for j in range(self.taille):
-				self.tableauJeu[i][j] = self.tableauDeJeuPreview[i][j] 
+				self.tableauJeu[i][j] = self.tableauDeJeuPreview[i][j]
 
-	def	partieFini(self, joueur)
+	def	partieFini(self, joueur):
 		if(len(joueur.listDePiece) <= 0):
 			return True
 		else:
@@ -87,5 +88,4 @@ class Plateau:
 		if(verif == False):
 			print("\033[31m", "ERREUR impossible de placer la piece")
 			print("\033[37m")
-		return verif				
-		
+		return verif
