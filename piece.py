@@ -22,16 +22,16 @@ class Piece:
 		for i in range(len(self.matrice)):
 			ligne = ""
 			for y in range(len(self.matrice)):
-				if self.matrice[i][y] == 1:
+				if self.matrice[i][y] == 1 or self.matrice[i][y] =="1":
 					print("\033[41m", " ", end="") #rouge
 					print("\033[0m", end="")
-				elif self.matrice[i][y] == 2:
+				elif self.matrice[i][y] == 2 or self.matrice[i][y] =="2":
 					print("\033[42m", " ", end="") #vert
 					print("\033[0m", end="")
-				elif self.matrice[i][y] == 3:
-					print("\033[43m", " ", end="") #jaune
+				elif self.matrice[i][y] == 3 or self.matrice[i][y] =="3":
+					print("\033[45m", " ", end="") #magenta
 					print("\033[0m", end="")
-				elif self.matrice[i][y] == 4:
+				elif self.matrice[i][y] == 4 or self.matrice[i][y] =="4":
 					print("\033[46m", " ", end="") #bleu
 					print("\033[0m", end="")
 				else:

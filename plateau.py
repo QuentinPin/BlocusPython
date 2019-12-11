@@ -22,16 +22,16 @@ class Plateau:
 		#self.effaceEcran()
 		for ligne in range (self.taille):
 			for colonne in range (self.taille):
-				if self.tableauDeJeuPreview[ligne][colonne] == 1:
+				if self.tableauDeJeuPreview[ligne][colonne] == 1 or self.tableauDeJeuPreview[ligne][colonne] =="1":
 					print("\033[41m", " ", end="") #rouge
 					print("\033[0m", end="")
-				elif self.tableauDeJeuPreview[ligne][colonne] == 2:
+				elif self.tableauDeJeuPreview[ligne][colonne] == 2  or self.tableauDeJeuPreview[ligne][colonne] =="2":
 					print("\033[42m", " ", end="") #vert
 					print("\033[0m", end="")
-				elif self.tableauDeJeuPreview[ligne][colonne] == 3:
-					print("\033[43m", " ", end="") #jaune
+				elif self.tableauDeJeuPreview[ligne][colonne] == 3 or self.tableauDeJeuPreview[ligne][colonne] =="3":
+					print("\033[45m", " ", end="") #magenta
 					print("\033[0m", end="")
-				elif self.tableauDeJeuPreview[ligne][colonne] == 4:
+				elif self.tableauDeJeuPreview[ligne][colonne] == 4 or self.tableauDeJeuPreview[ligne][colonne] =="4":
 					print("\033[46m", " ", end="") #bleu
 					print("\033[0m", end="")
 				else:

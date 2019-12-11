@@ -24,7 +24,7 @@ class Game:
 		self.runGame = True
 
 	def start(self):
-		self.joueurEnCours = self.listDeJoueur[1]
+		self.joueurEnCours = self.listDeJoueur[0]
 		self.pieceEnCours = self.joueurEnCours.getPremierePiece()
 		self.plateau.initPlateau()
 		self.plateau.affichePlateau()
@@ -56,7 +56,10 @@ class Game:
 		print("\t- (B) pour sauvegarder et quitter la partie")
 
 	def joueurSuivant(self):
-		self.joueurEnCours = self.listDeJoueur[1 - self.listDeJoueur.index(self.joueurEnCours)]
+		if self.listDeJoueur.index(self.joueurEnCours) == len(self.listDeJoueur)-1:
+			self.joueurEnCours = self.listDeJoueur[0]
+		else:
+			self.joueurEnCours = self.listDeJoueur[self.listDeJoueur.index(self.joueurEnCours)+1]
 		self.pieceEnCours = self.joueurEnCours.getPremierePiece()
 
 	def action(self):

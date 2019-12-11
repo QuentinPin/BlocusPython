@@ -15,9 +15,16 @@ class Enregistrement:
 		self.listDejoueur = listJoueur
 
 	def enregistrer(self, fileName):
-		pieceDuJoueur1 = self.createTableauPieceJoueur(0)
-		pieceDuJoueur2 = self.createTableauPieceJoueur(1)
-		np.savez(fileName, plateauDeJeu=self.plateau, pieceJoueur1=pieceDuJoueur1, pieceJoueur2=pieceDuJoueur2, plateau=self.plateau.tableauJeu)
+		if len(self.listDejoueur) == 2:
+			pieceDuJoueur1 = self.createTableauPieceJoueur(0)
+			pieceDuJoueur2 = self.createTableauPieceJoueur(1)
+			np.savez(fileName, plateauDeJeu=self.plateau, pieceJoueur1=pieceDuJoueur1, pieceJoueur2=pieceDuJoueur2, plateau=self.plateau.tableauJeu)
+		if len(self.listDejoueur) == 4:
+			pieceDuJoueur1 = self.createTableauPieceJoueur(0)
+			pieceDuJoueur2 = self.createTableauPieceJoueur(1)
+			pieceDuJoueur3 = self.createTableauPieceJoueur(2)
+			pieceDuJoueur4 = self.createTableauPieceJoueur(3)
+			np.savez(fileName, plateauDeJeu=self.plateau, pieceJoueur1=pieceDuJoueur1, pieceJoueur2=pieceDuJoueur2, pieceJoueur3=pieceDuJoueur3, pieceJoueur4=pieceDuJoueur4, plateau=self.plateau.tableauJeu)
 
 	def createTableauPieceJoueur(self, index):
 		listePieceJoueur = []
