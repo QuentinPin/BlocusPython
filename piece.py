@@ -6,7 +6,6 @@ Created on Fri Nov  8 08:26:25 2019
 """
 
 #permet de récupéré a partir d'un fichier
-import numpy as np
 
 class Piece:
 
@@ -23,8 +22,20 @@ class Piece:
 		for i in range(len(self.matrice)):
 			ligne = ""
 			for y in range(len(self.matrice)):
-				ligne += "|" + self.matrice[i][y]
-			ligne += "|"
+				if self.matrice[i][y] == 1:
+					print("\033[41m", " ", end="") #rouge
+					print("\033[0m", end="")
+				elif self.matrice[i][y] == 2:
+					print("\033[42m", " ", end="") #vert
+					print("\033[0m", end="")
+				elif self.matrice[i][y] == 3:
+					print("\033[43m", " ", end="") #jaune
+					print("\033[0m", end="")
+				elif self.matrice[i][y] == 4:
+					print("\033[46m", " ", end="") #bleu
+					print("\033[0m", end="")
+				else:
+					print(self.matrice[i][y] + " ", end="")
 			print(ligne)
 
 	# Fait une rotation par la gauche de la pièce

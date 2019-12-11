@@ -1,4 +1,3 @@
-import sys
 import numpy as np
 
 class Plateau:
@@ -22,9 +21,22 @@ class Plateau:
 	def affichePlateau (self):
 		#self.effaceEcran()
 		for ligne in range (self.taille):
-		    for colonne in range (self.taille):
-		        print (self.tableauDeJeuPreview[ligne][colonne]+" ",end="")
-		    print(" ")
+			for colonne in range (self.taille):
+				if self.tableauDeJeuPreview[ligne][colonne] == 1:
+					print("\033[41m", " ", end="") #rouge
+					print("\033[0m", end="")
+				elif self.tableauDeJeuPreview[ligne][colonne] == 2:
+					print("\033[42m", " ", end="") #vert
+					print("\033[0m", end="")
+				elif self.tableauDeJeuPreview[ligne][colonne] == 3:
+					print("\033[43m", " ", end="") #jaune
+					print("\033[0m", end="")
+				elif self.tableauDeJeuPreview[ligne][colonne] == 4:
+					print("\033[46m", " ", end="") #bleu
+					print("\033[0m", end="")
+				else:
+					print(self.tableauDeJeuPreview[ligne][colonne] + " ", end="")
+			print(" ")
 
 	# Permet d'ajouter la pièce au plateau
 	def putPieceOnPreview(self, piece):

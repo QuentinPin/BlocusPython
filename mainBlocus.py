@@ -27,12 +27,8 @@ print("\t - (2) Charger une partie")
 action = input()
 if action == "1":
 	listDeJoueur = []
-	for i in range(2):
-		couleurJoueur = ""
-		while couleurJoueur == "":
-			print("Quel est la couleur (caractère) du joueur  " + str(i + 1) + "  ?")
-			couleurJoueur = input()
-		listDeJoueur.append(Joueur(couleurJoueur))
+	listDeJoueur.append(Joueur(1))
+	listDeJoueur.append(Joueur(2))
 	game = Game(listDeJoueur)
 	game.start()
 elif action == "2":
