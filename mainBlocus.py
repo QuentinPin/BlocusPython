@@ -14,7 +14,7 @@ from factoryPiece import FactoryPiece
 def suprimerPieceDejasPlacer(joueur, tableauId):
 	pieceSuprimer = []
 	for i in joueur.getPieces():
-		if str(i.getId()) not in list(tableauId) or (str(i.getId()) == "1" and joueur.couleur == "1"):
+		if str(i.getId()) not in list(tableauId[1:]):
 			pieceSuprimer.append(i)
 	for i in pieceSuprimer:
 		 joueur.getPieces().remove(i)
@@ -45,18 +45,18 @@ elif action == "2":
 		fileToLoad = Enregistrement.loadFile(fichiers[int(saisie)])
 		plateau = Plateau()
 		plateau.setPlateau(fileToLoad["plateau"])
-		joueur1 = Joueur(fileToLoad["pieceJoueur1"][0])
-		joueur2 = Joueur(fileToLoad["pieceJoueur2"][0])
+		joueur1 = Joueur(str(fileToLoad["pieceJoueur1"][0]))
+		joueur2 = Joueur(str(fileToLoad["pieceJoueur2"][0]))
 		joueur1.setPieces(FactoryPiece.createAllPiece(joueur1.couleur))
 		joueur2.setPieces(FactoryPiece.createAllPiece(joueur2.couleur))
 		suprimerPieceDejasPlacer(joueur1, fileToLoad["pieceJoueur1"])
 		suprimerPieceDejasPlacer(joueur2, fileToLoad["pieceJoueur2"])
 		if "pieceJoueur3" in fileToLoad.files:
-			joueur3 = Joueur(fileToLoad["pieceJoueur3"][0])
+			joueur3 = Joueur(str(fileToLoad["pieceJoueur3"][0]))
 			joueur3.setPieces(FactoryPiece.createAllPiece(joueur3.couleur))
 			suprimerPieceDejasPlacer(joueur3, fileToLoad["pieceJoueur3"])
 		if "pieceJoueur4" in fileToLoad.files:
-			joueur4 = Joueur(fileToLoad["pieceJoueur4"][0])
+			joueur4 = Joueur(str(fileToLoad["pieceJoueur4"][0]))
 			joueur4.setPieces(FactoryPiece.createAllPiece(joueur4.couleur))
 			suprimerPieceDejasPlacer(joueur4, fileToLoad["pieceJoueur4"])
 		if joueur2.getNbPieceRestante() > joueur1.getNbPieceRestante():
@@ -70,10 +70,10 @@ elif action == "2":
 			listDeJoueur.append(joueur1)
 			listDeJoueur.append(joueur2)
 		if joueur4.getNbPieceRestante() > joueur3.getNbPieceRestante():
-			listDeJoueur.append(joueur3)
 			listDeJoueur.append(joueur4)
 			listDeJoueur.append(joueur1)
 			listDeJoueur.append(joueur2)
+			listDeJoueur.append(joueur3)
 		else :
 			listDeJoueur.append(joueur1)
 			listDeJoueur.append(joueur2)

@@ -107,7 +107,7 @@ class Plateau:
 		if (len(joueur.listDePiece) == 0):
 			return
 		for piece in joueur.listDePiece:
-			copyPiece = None 
+			copyPiece = None
 			copyPiece = copy.copy(piece)
 			for x in range(22):
 				for y in range(22):
@@ -131,7 +131,7 @@ class Plateau:
 								copyPiece.rotation()
 							if(a == 0):
 								copyPiece.retourner()
-#TODO VERIF LISTE JOUEUR 
+#TODO VERIF LISTE JOUEUR
 	def verifierFinPartie(self, joueur, joueurs):
 		copyTableauJeu = [[' ' for i in range(self.taille)] for j in range(self.taille)]
 		tableauTemp = [[' ' for i in range(self.taille)] for j in range(self.taille)]
@@ -142,7 +142,7 @@ class Plateau:
 		if (len(joueur.listDePiece) == 0):
 			return True
 		for piece in joueur.listDePiece:
-			copyPiece = None 
+			copyPiece = None
 			copyPiece = copy.copy(piece)
 			for x in range(22):
 				for y in range(22):
@@ -172,7 +172,7 @@ class Plateau:
 		for i in range(self.taille):
 			for j in range(self.taille):
 				copyTableauJeu[i][j] = self.tableauJeu[i][j]
-		if ((copyTableauJeu == self.tableauDeJeuPreview) and (isTest == False)):
+		if ((self.tabEgal(copyTableauJeu, self.tableauDeJeuPreview)) and (isTest == False)):
 			if isTest == False:
 				print("\033[31m", "ERREUR impossible de placer la piece")
 				print("\033[37m")
