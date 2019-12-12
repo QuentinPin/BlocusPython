@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Nov  8 11:08:31 2019
-
 @author: quent
 """
 from plateau import Plateau
@@ -9,6 +8,7 @@ from factoryPiece import FactoryPiece
 import keyboard
 import time
 from enregistrement import Enregistrement
+from operator import itemgetter, attrgetter
 
 class Game:
 
@@ -19,12 +19,17 @@ class Game:
 		for i in range(len(self.listDeJoueur)):
 			if self.listDeJoueur[i].getPieces() == None or len(self.listDeJoueur[i].getPieces()) == 0:
 				self.listDeJoueur[i].setPieces(FactoryPiece.createAllPiece(self.listDeJoueur[i].couleur))
+		self.joueursEnVie = []
+		for p in self.listDeJoueur:
+			self.joueursEnVie.append(p)
 		self.joueurEnCours = None
 		self.pieceEnCours = None
 		self.runGame = True
+		self.nbSurrender = 0
+		self.classement = []
 
 	def start(self):
-		self.joueurEnCours = self.listDeJoueur[0]
+		self.joueurEnCours = self.joueursEnVie[0]
 		self.pieceEnCours = self.joueurEnCours.getPremierePiece()
 		self.plateau.initPlateau()
 		self.plateau.affichePlateau()
@@ -56,10 +61,12 @@ class Game:
 		print("\t- (B) pour sauvegarder et quitter la partie")
 
 	def joueurSuivant(self):
-		if self.listDeJoueur.index(self.joueurEnCours) == len(self.listDeJoueur)-1:
-			self.joueurEnCours = self.listDeJoueur[0]
+		if (len(self.joueursEnVie) == 1):
+			self.joueurEnCours = self.joueursEnVie[0]
+		if self.joueursEnVie.index(self.joueurEnCours) == len(self.joueursEnVie)-1:
+			self.joueurEnCours = self.joueursEnVie[0]
 		else:
-			self.joueurEnCours = self.listDeJoueur[self.listDeJoueur.index(self.joueurEnCours)+1]
+			self.joueurEnCours = self.joueursEnVie[self.joueursEnVie.index(self.joueurEnCours)+1]
 		self.pieceEnCours = self.joueurEnCours.getPremierePiece()
 
 	def action(self):
@@ -95,12 +102,26 @@ class Game:
 					self.pieceEnCours = self.joueurEnCours.getPiecePrecedente()
 					break
 				elif keyboard.is_pressed('v'):
-					if(self.plateau.validerPiece(self.pieceEnCours, self.joueurEnCours, self.listDeJoueur[1 - self.listDeJoueur.index(self.joueurEnCours)])):
+					if(self.plateau.validerPiece(self.pieceEnCours, self.joueurEnCours, self.listDeJoueur)):
 						self.joueurEnCours.removePiece(self.pieceEnCours)
+						self.joueurEnCours.surrender = self.plateau.verifierFinPartie(self.joueurEnCours, self.listDeJoueur)
+						for player in self.joueursEnVie:
+							if (player.surrender == True):
+								self.joueursEnVie.remove(player)
+								self.classement.append(player)
+								self.nbSurrender = self.nbSurrender + 1
+						nbJoueur = len(self.joueursEnVie) + len(self.classement)
+						if ((self.plateau.partieFini(self.joueurEnCours)) or (self.nbSurrender == nbJoueur)):
+							self.runGame = False
+							for player in self.classement:
+								player.calculPoint()
+							self.classement = sorted(self.classement, key=attrgetter('nbPoint'), reverse=False)
+							for i in range(len(self.classement)):
+								if (i == 0):
+									print ("Le joueur " + str(self.classement[i].couleur) + " à gagner avec " + str(self.classement[i].nbPoint) + " points")
+								else:
+									print ("Le joueur " + str(self.classement[i].couleur) + " à perdu avec " + str(self.classement[i].nbPoint) + " points")
 						self.joueurSuivant()
-					if (self.plateau.partieFini(self.joueurEnCours)):
-						self.runGame = False
-						print("Le joueur avec la couleur "+self.joueurEnCours.couleur+" A gagné")
 					break
 				elif keyboard.is_pressed('b'):
 					fileName = input("Saisissez le nom de votre partie : ")
@@ -109,6 +130,28 @@ class Game:
 					save.enregistrer(fileName)
 					print("Enregistrement terminer....")
 					self.runGame = False
+					break
+				elif keyboard.is_pressed('h'):
+					self.plateau.bot(self.joueurEnCours, self.listDeJoueur)
+					self.joueurEnCours.surrender = self.plateau.verifierFinPartie(self.joueurEnCours, self.listDeJoueur)
+					for player in self.joueursEnVie:
+						if (player.surrender == True):
+							self.joueurSuivant()
+							self.joueursEnVie.remove(player)
+							self.classement.append(player)
+							self.nbSurrender = self.nbSurrender + 1
+					nbJoueur = len(self.joueursEnVie) + len(self.classement)
+					if ((self.plateau.partieFini(self.joueurEnCours)) or (self.nbSurrender == nbJoueur)):
+						self.runGame = False
+						for player in self.classement:
+							player.calculPoint()
+						self.classement = sorted(self.classement,  key=attrgetter('nbPoint'), reverse=False)
+						for i in range(len(self.classement)):
+							if (i == 0):
+								print ("Le joueur " + str(self.classement[i].couleur) + " à gagner avec " + str(self.classement[i].nbPoint) + " points")
+							else:
+								print ("Le joueur " + str(self.classement[i].couleur) + " à perdu avec " + str(self.classement[i].nbPoint) + " points")
+					self.joueurSuivant()
 					break
 			except:
 				break

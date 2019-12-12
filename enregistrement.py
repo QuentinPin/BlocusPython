@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Nov 14 15:48:10 2019
-
 @author: quent
 """
 import numpy as np
